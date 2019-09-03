@@ -15,7 +15,10 @@ cd laravel_handson
 
 - /laradock配下の`env-example`をコピー
 
-`cp env-example .env`
+```
+cd laradock
+cp env-example .env
+```
 
 - .env内の`MYSQL_VERSION`を5.7に書き換える
     - latestのver8だとマイグレーションの実行ができなかったため、5.7とする
@@ -26,7 +29,11 @@ cd laravel_handson
 
 - 立ち上がったか確認
 
-`docker ps` or `ctop`
+`docker ps`
+
+or
+
+`ctop`
 
 ## Laravelアプリを作成する
 
@@ -71,9 +78,9 @@ DB_USERNAME=default # homestead から変更
 
 `php artisan migrate`
 
-- VSCodeの人はphpMyAdmin（http://localhost:8080/）のほうが見やすいかも
+- VSCodeの人はphpMyAdmin`http://localhost:8080/`のほうが見やすいかも
 
-- コンテナ接続して確認でもOK
+    - mysqlコンテナ接続して確認でも、やりやすいほうでOK
 
 - PHPStorm/IntelliJのDB接続情報
 ```
