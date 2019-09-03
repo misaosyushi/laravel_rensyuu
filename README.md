@@ -43,13 +43,13 @@ or
 
 - Laravelをインストール
 
-`composer create-project laravel/laravel sample_app`
+`composer create-project laravel/laravel sample-app`
 
 ## 作成したLaravelアプリの.envファイルを編集する
 
 - laradockで作成したmysql環境に合わせる
 
-/sample_app/.env
+/sample-app/.env
 ```
 DB_HOST=mysql # 127.0.0.1 から変更
 DB_DATABASE=default # homestead から変更
@@ -58,11 +58,11 @@ DB_USERNAME=default # homestead から変更
 
 ## laradockの.envファイルを編集し、コンテナ再起動
 
-- APP_CODE_PATH_HOSTを作成したLaravelアプリ名に変更する
+- `APP_CODE_PATH_HOST`を作成したLaravelアプリ名に変更する
 
 /laradock/.env
 
-`APP_CODE_PATH_HOST=../sample_app/`
+`APP_CODE_PATH_HOST=../sample-app/`
 
 - dockerを再起動する
 
@@ -90,3 +90,55 @@ User: default
 Password: secret
 Database: default
 ```
+
+# ハンズオン手順
+
+## Hello Worldする
+
+- コントローラーを作成
+
+`php artisan make:controller HelloController --resource`
+
+→`--resource`をつけることでコントローラー内でCRUD特性の機能を一式セットで作成してくれる
+
+- `/routes/api.php`にルート（コントローラーとのマッピング）を追加する
+
+`Route::get('hello', 'HelloController@index');`
+
+- ルート一覧の確認
+
+`php artisan route:list`
+
+- `http://localhost/api/hello`にアクセスして、コントローラーでreturnした文字列が表示されていればOK
+
+## Eloquentモデルとマイグレーションを作成して、実行する
+
+- Eloquentモデルとマイグレーションを作成する
+
+`php artisan make:model Member -m`
+
+→`-m`をつけることでマイグレーションも一緒に作成してくれる
+
+- マイグレーションの実行
+
+ `php artisan migrate`
+ 
+- DB確認して、テストデータ入れておく
+
+## GETリクエストに対してデータを検索（全件）→結果をjsonで返す
+
+- コントローラーを作成する
+
+`php artisan make:controller MemberController --api --model=Member`
+
+- ルートを追加する
+
+`Route::resource('member', 'MemberController');`
+
+- コントローラーのindexメソッドで`Member::all()`を返却する
+
+## GETリクエストに対してデータを検索（1件）→結果をjsonで返す
+
+- コントローラーのshowメソッドで`$member`を返却する
+
+
