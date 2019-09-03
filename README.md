@@ -131,6 +131,10 @@ Database: default
 
 `php artisan make:controller MemberController --api --model=Member`
 
+→`--resource`も`--api`も挙動は一緒っぽい
+
+→`--model`をつけることで引数にmodelが入ったメソッドを生成してくれる
+
 - ルートを追加する
 
 `Route::resource('member', 'MemberController');`
