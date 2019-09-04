@@ -51,9 +51,12 @@ or
 
 /sample-app/.env
 ```
-DB_HOST=mysql # 127.0.0.1 から変更
-DB_DATABASE=default # homestead から変更
-DB_USERNAME=default # homestead から変更
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=default
+DB_USERNAME=default
+DB_PASSWORD=secret
 ```
 
 ## laradockの.envファイルを編集し、コンテナ再起動
@@ -145,4 +148,31 @@ Database: default
 
 - コントローラーのshowメソッドで`$member`を返却する
 
+
+# 時間が余ったらコーナー
+
+## カラムを追加してみる
+
+- テーブル更新用のマイグレーションファイルを作成する
+
+`php artisan make:migration add_column_age_to_members_table --table=members`
+
+→既存のテーブルに変更を加えるときは、`--table`オプションでテーブル名を指定する
+
+- `up()`にカラム追加の処理を追加する
+
+```
+$table->integer('age');
+$table->string('mail');
+```
+
+- `down()`にはカラム削除の処理を追加する
+
+```
+$table->dropColumn('age', 'mail');
+```
+
+## postしてみる
+
+- MemberControllerの`store()`メソッドに処理を追加する
 

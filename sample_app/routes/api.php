@@ -21,4 +21,4 @@ Route::get('hoge', 'HogeController@index');
 
 Route::get('hello', 'HelloController@index');
 
-Route::resource('member', 'MemberController');
+Route::resource('members', 'MemberController');
