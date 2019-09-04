@@ -176,3 +176,11 @@ $table->dropColumn('age', 'mail');
 
 - MemberControllerの`store()`メソッドに処理を追加する
 
+## putしてみる
+
+- MemberControllerの`update()`メソッドに処理を追加する
+
+## deleteしてみる
+
+- MemberControllerの`destroy()`メソッドに処理を追加する
+

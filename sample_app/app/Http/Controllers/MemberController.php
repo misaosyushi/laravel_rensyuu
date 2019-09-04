@@ -31,7 +31,7 @@ class MemberController extends Controller
         $member->age = $request->age;
         $member->mail = $request->mail;
         $member->save();
-        return redirect('api/members');
+        return $member;
     }
 
     /**
@@ -52,9 +52,15 @@ class MemberController extends Controller
      * @param \App\Member $member
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Member $member)
+    public function update(Request $request, $id)
     {
-        //
+        $member = Member::find($id);
+        $member->id = $request->id;
+        $member->name = $request->name;
+        $member->age = $request->age;
+        $member->mail = $request->mail;
+        $member->save();
+        return $member;
     }
 
     /**
@@ -65,6 +71,6 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        //
+        $member->delete();
     }
 }
