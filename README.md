@@ -100,9 +100,15 @@ Database: default
 
 - コントローラーを作成
 
-`php artisan make:controller HelloController --resource`
+`php artisan make:controller HelloController`
 
-→`--resource`をつけることでコントローラー内でCRUD特性の機能を一式セットで作成してくれる
+app/Http/Controllers/HelloController.php
+
+```
+public function index() {
+    return 'Hello World';
+}
+```
 
 - `/routes/api.php`にルート（コントローラーとのマッピング）を追加する
 
@@ -132,7 +138,9 @@ Database: default
 
 - コントローラーを作成する
 
-`php artisan make:controller MemberController --api --model=Member`
+`php artisan make:controller MemberController --resource --model=Member`
+
+→`--resource`をつけることでコントローラー内でCRUD特性の機能を一式セットで作成してくれる
 
 →`--resource`も`--api`も挙動は一緒っぽい
 
