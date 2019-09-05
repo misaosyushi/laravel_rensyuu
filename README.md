@@ -49,7 +49,7 @@ or
 
 - laradockで作成したmysql環境に合わせる
 
-/sample-app/.env
+`/sample-app/.env`のDBの箇所だけを以下に書き換える
 ```
 DB_CONNECTION=mysql
 DB_HOST=mysql
