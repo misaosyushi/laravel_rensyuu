@@ -88,7 +88,7 @@ DB_PASSWORD=secret
 - PHPStorm/IntelliJのDB接続情報
 ```
 Host: 0.0.0.0
-Post: 3306
+Port: 3306
 User: default
 Password: secret
 Database: default
